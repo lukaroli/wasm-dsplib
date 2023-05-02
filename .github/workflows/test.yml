@@ -1,0 +1,32 @@
+name: test
+
+on:
+  workflow_dispatch:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  pull-requests: read
+
+concurrency:
+  group: '${{ github.workflow }} @ ${{ github.event.pull_request.head.label || github.head_ref || github.ref }}'
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v3
+      - name: install dependencies
+        uses: awalsh128/cache-apt-pkgs-action@latest
+          with:
+            packages: clang-15 wabt python3 python3-pip
+            version: 1.0
+      - name: build application
+        run: make build
+      
+  

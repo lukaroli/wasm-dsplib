@@ -1,7 +1,5 @@
-CC := clang
-LD := wasm-ld
-
-SYSROOT := ${WASI_SDK_PATH}/share/wasi-sysroot
+CC := clang-15
+LD := wasm-ld-15
 
 DISSASEMBLER := wasm2wat
 DECOMPILER := wasm-decompile

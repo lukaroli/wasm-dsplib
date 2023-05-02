@@ -1,7 +1,6 @@
 CC := clang
 LD := wasm-ld
-#CC := ${WASI_SDK_PATH}/bin/clang
-#LD := ${WASI_SDK_PATH}/bin/wasm-ld
+
 SYSROOT := ${WASI_SDK_PATH}/share/wasi-sysroot
 
 DISSASEMBLER := wasm2wat
@@ -27,7 +26,6 @@ INC_DIRS := $(shell find $(SRC_DIRS) -type d)
 INC_FLAGS := $(addprefix -I,$(INC_DIRS))
 
 CFLAGS := --target=wasm32 $(INC_FLAGS) -Wall -Wextra -nostdlib -O3 -flto -ffunction-sections -fdata-sections -std=c2x
-#
 
 LDFLAGS_RELEASE := --no-entry --lto-O3 --gc-sections --strip-all 
 LDFLAGS_TEST := --no-entry --lto-O3 --no-gc-sections --export-all -Map $(BUILD_DIR)/$(TEST_MAP)
@@ -74,11 +72,6 @@ decompile: $(BUILD_DIR)/$(RELEASE_EXEC).dcmp
 clean:
 	$(RM) -r $(BUILD_DIR)
 
-
-
-
-#.PHONY: all
-#all: $(BUILD_DIR)/$(RELEASE_EXEC) run
 
 default: all
 

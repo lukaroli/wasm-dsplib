@@ -22,9 +22,7 @@ jobs:
       - name: install dependencies
         uses: awalsh128/cache-apt-pkgs-action@latest
         with:
-          packages: clang-15 wabt python3 python3-pip llvm-15
+          packages: clang-15 lld-15 wabt python3 python3-pip
           version: 1.0
       - name: build application
         run: make build
-      
-  

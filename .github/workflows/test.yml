@@ -21,6 +21,7 @@ jobs:
         uses: actions/checkout@v3
       - name: install wasi-sdk
         uses: jaxxstorm/action-install-gh-release@v1.10.0
+        with:
           repo: WebAssembly/wasi-sdk
           platform: linux
           tag: 20.0

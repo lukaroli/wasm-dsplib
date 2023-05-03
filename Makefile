@@ -1,5 +1,5 @@
-CC := clang-15
-LD := wasm-ld-15
+CC := clang
+LD := wasm-ld
 
 DISSASEMBLER := wasm2wat
 DECOMPILER := wasm-decompile

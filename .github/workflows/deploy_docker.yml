@@ -1,12 +1,9 @@
 name: deploy docker image
 
 on: 
-  workflow_dispatch:
-    inputs:
-      imageTag:
-        description: 'Docker image tag'     
-        required: true
-        default: 0.1
+  push:
+    branches:
+      - test_actions
 
 env:
   REGISTRY: ghcr.io
